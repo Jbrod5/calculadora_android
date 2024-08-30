@@ -8,11 +8,25 @@
     tools:context=".calculadora.Inicio"
     android:layout_gravity="center">
 
+
+    <TextView
+        android:id="@+id/tit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etOperaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese la operación a calcular"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        />
+
     <EditText
         android:id="@+id/etOperaciones"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tit"
 
         android:layout_width="0dp"
         android:layout_height="600dp"/>
@@ -21,7 +35,7 @@
         android:id="@+id/btnCompilar"
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:text="Compilar"
+        android:text="Calcular"
         android:textColor="@color/white"
         android:background="@color/purple_700"
 
