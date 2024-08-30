@@ -6,6 +6,7 @@
 package com.jbrod.calculadoracompi.analizadores;
 
 import java_cup.runtime.*;
+import android.util.Log;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -124,11 +125,14 @@ public class Parser extends java_cup.runtime.lr_parser {
         /*System.out.println("Simbolo con error:" + symbl_name_from_id(cur_token.sym));
         System.out.println("Linea " + cur_token.left);
         System.out.println("Columna " + cur_token.right);*/
+        Log.d("PARSER", "Simbolo con error:" + symbl_name_from_id(cur_token.sym) + " || Linea " + cur_token.left + "  | Columna " + cur_token.right);
         if (expected_token_ids().isEmpty()) {
             //System.out.println("Ya no se esperaba ningun simbolo");
+            Log.d("PARSER", "Ya no se esperaba ningun simbolo");
             //reporteErrores.agregarError(symbl_name_from_id(cur_token.sym),cur_token.left,cur_token.right, "Sintactico", "Ya no se esperaba ningun simbolo." );
         }else{
             //reporteErrores.agregarError(symbl_name_from_id(cur_token.sym),cur_token.left,cur_token.right, "Sintactico", "Se esperaba otro simbolo." );
+            Log.d("PARSER", "Se esperaba otro simbolo");
         }
 
     }
@@ -191,6 +195,7 @@ class CUP$Parser$actions {
 		int numberright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		Object number = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		 resultado = String.valueOf((double)number); 
+                         Log.d("PARSER", resultado); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("inicio",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

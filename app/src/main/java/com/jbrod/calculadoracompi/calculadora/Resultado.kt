@@ -1,6 +1,7 @@
 package com.jbrod.calculadoracompi.calculadora
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,8 @@ class Resultado : AppCompatActivity() {
         }
 
         val txtResultado = findViewById<TextView>(R.id.txtResultado)
-        val resultado = intent.extras?.getString("RESULADO").orEmpty()
+        val resultado = intent.extras?.getString("RESULTADO").orEmpty()
+        Log.d("VRESULT", resultado)
         txtResultado.setText(resultado)
     }
 }

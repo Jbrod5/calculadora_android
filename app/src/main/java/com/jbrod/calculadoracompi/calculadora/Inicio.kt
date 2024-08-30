@@ -2,6 +2,7 @@ package com.jbrod.calculadoracompi.calculadora
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -31,13 +32,21 @@ class Inicio : AppCompatActivity() {
         btnCompilar.setOnClickListener{
 
             var resultado: String = ""
-
-            var reader = StringReader(resultado)
+            var reader = StringReader(etOperaciones.getText().toString())
             var lexer = Lexer(reader)
             var parser = Parser(lexer)
-            parser.parse()
+            try {
 
-            resultado = parser.obtenerResultado()
+                parser.parse()
+                resultado = parser.obtenerResultado()
+
+            } catch (e: Exception) {
+                // Código para manejar la excepción
+                resultado = parser.obtenerResultado()
+            }
+            Log.d("RESULTADO", "Resultado: " + resultado );
+
+
 
             val intent = Intent(this, Resultado::class.java)
             intent.putExtra("RESULTADO", resultado)

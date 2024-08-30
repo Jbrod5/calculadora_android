@@ -6,6 +6,7 @@
 
 package com.jbrod.calculadoracompi.analizadores;
 import java_cup.runtime.*;
+import android.util.Log; 
 
 
 @SuppressWarnings("fallthrough")
@@ -280,16 +281,19 @@ public class Lexer implements java_cup.runtime.Scanner {
 
     // Manejo de tokens
     private Symbol symbol(int type){
+        Log.d("LEXER", "Token reconocido: " + yytext() + " || Linea " + (yyline +1) + " Columna: " + (yycolumn +1));
         return new Symbol(type, yyline + 1, yycolumn + 1);
     }
 
     private Symbol symbol(int type, Object value){
         //System.out.println("Token reconocido: " + yytext());
+        Log.d("LEXER", "Token reconocido: " + yytext() + " || Linea " + (yyline +1) + " Columna: " + (yycolumn +1));
         return new Symbol(type, yyline + 1, yycolumn + 1, value);
     }
 
     private void error(String message){
         //System.out.println("Error en la linea: " + (yyline + 1) + " columna: " + (yycolumn + 1) + " : " + message);
+        Log.d("LEXER","Error en la linea: " + (yyline + 1) + " columna: " + (yycolumn + 1) );
     }
 
     
@@ -722,6 +726,7 @@ public class Lexer implements java_cup.runtime.Scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
             { /*System.out.println("No se reconocio el lexema " + yytext() + " como un token valido y se ignoro.");*/
+                   Log.d("LEXER", "No se reconocio el lexema " + yytext() + " como un token valido y se ignoro.");
                  /*errores.agregarError(yytext(), yyline +1, yycolumn + 1, "Lexico", "El simbolo no se encuentra definido en el alfabeto.");*/
             }
           // fall through
